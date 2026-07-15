@@ -1,6 +1,6 @@
 {
   "name": "@bezel-labs/crystal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "Send validated CSS and Google Fonts into an embedded preview (e.g. a Storybook on another origin) over postMessage. Framework-agnostic, dependency-free, security-first.",
   "keywords": [

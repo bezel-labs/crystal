@@ -8,7 +8,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
-  id-token: write
+  id-token: write # OIDC — authenticates to npm via Trusted Publishing (no NPM_TOKEN)
 
 jobs:
   release:
@@ -22,9 +22,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - run: npm install -g npm@latest # OIDC Trusted Publishing needs npm >= 11.5.1
       - run: npm ci
       - run: npm run build
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
