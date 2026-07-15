@@ -1,0 +1,71 @@
+{
+  "name": "@bezel-labs/crystal",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Send validated CSS and Google Fonts into an embedded preview (e.g. a Storybook on another origin) over postMessage. Framework-agnostic, dependency-free, security-first.",
+  "keywords": [
+    "live-preview",
+    "postmessage",
+    "iframe",
+    "css-injection",
+    "google-fonts",
+    "storybook",
+    "cross-origin",
+    "design-tokens"
+  ],
+  "license": "PolyForm-Shield-1.0.0",
+  "author": "Bezel (https://bezel.new)",
+  "homepage": "https://github.com/bezel-labs/crystal#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bezel-labs/crystal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bezel-labs/crystal/issues"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "semantic-release": "^24.2.0",
+    "ts-jest": "^29.2.5",
+    "tsup": "^8.3.5",
+    "typescript": "5.9.3"
+  }
+}
