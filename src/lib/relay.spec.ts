@@ -164,8 +164,8 @@ describe('createLivePreviewRelay', () => {
   });
 
   it('falls back to DEFAULT_PARENT_ORIGINS when allowedOrigins is omitted', () => {
-    // The default trusts any tokendesigner.com host via a subdomain wildcard.
-    expect(DEFAULT_PARENT_ORIGINS).toContain('https://*.tokendesigner.com');
+    // The default trusts any bezel.new host via a subdomain wildcard.
+    expect(DEFAULT_PARENT_ORIGINS).toContain('https://*.bezel.new');
 
     const child = { postMessage: jest.fn() } as unknown as Window & { postMessage: jest.Mock };
     relay = createLivePreviewRelay({
@@ -173,8 +173,8 @@ describe('createLivePreviewRelay', () => {
       targetOrigin: CHILD_ORIGIN,
     });
 
-    dispatchCss('.x { color: red; }', 'https://app.tokendesigner.com'); // exact prod
-    dispatchCss('.y { color: blue; }', 'https://dev.app.tokendesigner.com'); // wildcard subdomain
+    dispatchCss('.x { color: red; }', 'https://app.bezel.new'); // exact prod
+    dispatchCss('.y { color: blue; }', 'https://dev.app.bezel.new'); // wildcard subdomain
     dispatchCss('.z { color: lime; }', 'https://evil.example.com'); // not in the default list
 
     expect(child.postMessage).toHaveBeenCalledTimes(2);

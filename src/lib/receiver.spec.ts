@@ -31,27 +31,27 @@ describe('startLivePreviewReceiver', () => {
     expect(() => startLivePreviewReceiver({ allowedOrigins: [] })).toThrow();
   });
 
-  it('defaults to DEFAULT_PARENT_ORIGINS (tokendesigner.com only, no localhost/"*")', () => {
+  it('defaults to DEFAULT_PARENT_ORIGINS (bezel.new only, no localhost/"*")', () => {
     expect(DEFAULT_PARENT_ORIGINS).toEqual([
-      'https://tokendesigner.com',
-      'https://*.tokendesigner.com',
+      'https://bezel.new',
+      'https://*.bezel.new',
     ]);
   });
 
-  it('accepts a nested tokendesigner.com subdomain under the default allowlist', () => {
+  it('accepts a nested bezel.new subdomain under the default allowlist', () => {
     receiver = startLivePreviewReceiver({});
 
-    dispatchCss('.x { color: red; }', 'https://app.tokendesigner.com');
-    dispatchCss('.y { color: blue; }', 'https://dev.app.tokendesigner.com');
+    dispatchCss('.x { color: red; }', 'https://app.bezel.new');
+    dispatchCss('.y { color: blue; }', 'https://dev.app.bezel.new');
 
     expect(document.getElementById(DEFAULT_STYLE_ID)?.textContent).toBe('.y { color: blue; }');
   });
 
-  it('ignores non-tokendesigner origins under the default allowlist', () => {
+  it('ignores non-bezel origins under the default allowlist', () => {
     receiver = startLivePreviewReceiver({});
 
-    dispatchCss('.x { color: red; }', 'https://eviltokendesigner.com');
-    dispatchCss('.x { color: red; }', 'https://tokendesigner.com.evil.com');
+    dispatchCss('.x { color: red; }', 'https://evilbezel.new');
+    dispatchCss('.x { color: red; }', 'https://bezel.new.evil.com');
     dispatchCss('.x { color: red; }', 'http://localhost:4200');
 
     expect(document.getElementById(DEFAULT_STYLE_ID)).toBeNull();

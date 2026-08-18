@@ -9,26 +9,26 @@
 /**
  * Parent origins trusted by default when a caller omits `allowedOrigins`.
  *
- * Locked to Token Designer hosts only — the apex and any `tokendesigner.com`
- * subdomain (prod `app.tokendesigner.com`, stages like `dev.app.tokendesigner.com`).
+ * Locked to Bezel hosts only — the apex and any `bezel.new` subdomain (prod
+ * `app.bezel.new`, stages like `dev.app.bezel.new`).
  * There is deliberately no `'*'` and no localhost here, so a deployed embed trusts
- * only tokendesigner.com. Consumers that need extra origins (e.g. localhost during
+ * only bezel.new. Consumers that need extra origins (e.g. localhost during
  * local dev) spread this constant and add their own:
  * `[...DEFAULT_PARENT_ORIGINS, 'http://localhost:4200']`.
  */
 export const DEFAULT_PARENT_ORIGINS: readonly string[] = [
-  'https://tokendesigner.com',
-  'https://*.tokendesigner.com',
+  'https://bezel.new',
+  'https://*.bezel.new',
 ];
 
 /**
  * Test whether `origin` is permitted by an allowlist entry. An entry may be:
- *  - an exact origin (`https://app.tokendesigner.com`),
+ *  - an exact origin (`https://app.bezel.new`),
  *  - the lone `'*'` (allow any — an explicit dev opt-out), or
- *  - a wildcard pattern such as `https://*.tokendesigner.com`, where each `*`
+ *  - a wildcard pattern such as `https://*.bezel.new`, where each `*`
  *    matches one or more DNS labels (dots allowed) but the match stays anchored to
  *    the surrounding literal, so it never crosses into a different domain
- *    (`https://tokendesigner.com.evil.com` and `https://eviltokendesigner.com` are
+ *    (`https://bezel.new.evil.com` and `https://evilbezel.new` are
  *    both rejected).
  */
 export const isOriginAllowed = (origin: string, allowed: string[]): boolean =>
